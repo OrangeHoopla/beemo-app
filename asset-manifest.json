@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.c0b362ca.js",
-    "static/js/787.e75d6d77.chunk.js": "/static/js/787.e75d6d77.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.c0b362ca.js.map": "/static/js/main.c0b362ca.js.map",
-    "787.e75d6d77.chunk.js.map": "/static/js/787.e75d6d77.chunk.js.map"
+    "main.css": "/beemo-app/static/css/main.073c9b0a.css",
+    "main.js": "/beemo-app/static/js/main.83f61efa.js",
+    "static/js/787.e75d6d77.chunk.js": "/beemo-app/static/js/787.e75d6d77.chunk.js",
+    "static/media/logo.svg": "/beemo-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/beemo-app/index.html",
+    "main.073c9b0a.css.map": "/beemo-app/static/css/main.073c9b0a.css.map",
+    "main.83f61efa.js.map": "/beemo-app/static/js/main.83f61efa.js.map",
+    "787.e75d6d77.chunk.js.map": "/beemo-app/static/js/787.e75d6d77.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.c0b362ca.js"
+    "static/js/main.83f61efa.js"
   ]
 }
