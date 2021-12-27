@@ -9,18 +9,14 @@ import {BrowserRouter as Router, Switch, Routes, Route} from 'react-router-dom';
 function App() {
 
   return (
-  	<Router>
-    <div className="App">
-    	<h2>now</h2>
-    <Routes>
-    	<Route path={process.env.PUBLIC_URL + '/'} element={<Login />} />
-    </Routes>
-
-      
-
-      
-    </div>
-    </Router>
+  	
+	    <div className="App">
+	    	<h2>help me</h2>
+		    <Routes>
+		    	<Route path="/" element={<Login />} />
+		    </Routes>
+	    </div>
+    
   );
 }
 
