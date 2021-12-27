@@ -13,7 +13,7 @@ function App() {
     <div className="App">
     	<h2>hello</h2>
     <Routes>
-    	<Route path="/login" element={<Login />} />
+    	<Route path="beemo-app/login" element={<Login />} />
     </Routes>
 
       
