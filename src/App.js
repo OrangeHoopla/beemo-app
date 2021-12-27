@@ -13,7 +13,7 @@ function App() {
     <div className="App">
     	<h2>hello</h2>
     <Routes>
-    	<Route path="beemo-app/login" element={<Login />} />
+    	<Route path={process.env.PUBLIC_URL + '/'} element={<Login />} />
     </Routes>
 
       
