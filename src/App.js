@@ -1,19 +1,27 @@
 import { Amplify } from 'aws-amplify';
-
+import Auth from '@aws-amplify/auth';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-
 import awsExports from './aws-exports';
-Amplify.configure(awsExports);
+import Login from './Login';
+import {BrowserRouter as Router, Switch, Routes, Route} from 'react-router-dom';
 
-function App({ signOut, user }) {
+function App() {
+
   return (
-    <>
-      <h1>Welcome {user.username} to Quade's Bee Montoring System</h1>
+  	<Router>
+    <div className="App">
+    	<h2>hello</h2>
+    <Routes>
+    	<Route path="/login" element={<Login />} />
+    </Routes>
 
-      <button onClick={signOut}>Sign out</button>
-    </>
+      
+
+      
+    </div>
+    </Router>
   );
 }
 
-export default withAuthenticator(App);
+export default (App);
