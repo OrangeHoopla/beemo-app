@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "beemoappe24a959e": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
