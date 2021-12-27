@@ -11,7 +11,7 @@ function App() {
   return (
   	<Router>
     <div className="App">
-    	<h2>hello</h2>
+    	<h2>now</h2>
     <Routes>
     	<Route path={process.env.PUBLIC_URL + '/'} element={<Login />} />
     </Routes>
