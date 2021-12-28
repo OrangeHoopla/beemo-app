@@ -4,19 +4,24 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import Login from './Login';
-import {BrowserRouter as Router, Switch, Routes, Route} from 'react-router-dom';
+import Hives from './Hives';
+import Hive from './Hive';
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import React from 'react';
 
 function App() {
 
   return (
   	
 	    <div className="App">
-	    	<h2>help god</h2>
+	    	<Link to="/hives">Hives</Link>
 		    <Routes>
-		    	<Route path="/login" element={<Login />} />
+		    	<Route path ="/login" element={<Login />} />
+		    	<Route path ="/hives" element={<Hives />} />
+		    	<Route path ="/hive" element={<Hive />} />
 		    </Routes>
 	    </div>
-    
+     
   );
 }
 
