@@ -13,12 +13,7 @@
     },
     "categories": {
       "auth": {
-        "beemoappe24a959e": {
-          "userPoolId": "us-east-1_MBHdo8Umd",
-          "userPoolName": "BeeKeepers",
-          "webClientId": "g6qk4m814fq1ptt4hptqr8r10",
-          "nativeClientId": "55inca0vjpjpptqvj6foofsm40"
-        }
+        "beemoapp62a18963": {}
       }
     }
   }
