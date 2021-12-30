@@ -7,6 +7,7 @@ import awsExports from './aws-exports';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {Button, Modal, Form, CardGroup, Row, Col, Card } from 'react-bootstrap';
 
 Amplify.configure(awsExports);
 
@@ -16,6 +17,11 @@ function Hives({ signOut, user }) {
 
 	const [hiveList,setHiveList] = useState([]);
 	const [name,setName] = useState('');
+
+	//modal stuff
+	const [show, setShow] = useState(false);
+  	const handleClose = () => setShow(false);
+  	const handleShow = () => setShow(true);
 
 	async function callApi(){
 		const mad = await Auth.currentAuthenticatedUser()
@@ -75,7 +81,6 @@ function Hives({ signOut, user }) {
 		  }
 		})
 		.then((res) => {
-		  //console.log(res.data)
 		  setHiveList(res.data)
 		})
 		.catch((error) => {
@@ -95,24 +100,54 @@ function Hives({ signOut, user }) {
     <>
       <h1>{user.username}'s Hive Listing</h1>
 
-      <button onClick={signOut}>Sign out</button>
-      <button onClick={callApi}>API</button>
-      <button onClick={gethives}>update hives</button>
-
+      <Button onClick={signOut}>Sign out</Button>
       
+      <Button variant="primary" onClick={handleShow}>
+        New Bee Hive
+      </Button>
 
-      <div className="beemaker">
-      	  <h1>create new hive</h1>
-	      <label>Name</label>
-	      <input type="text" onChange={(event) => {setName(event.target.value)}} />
-	      <button onClick={makeHive}> add hive</button>
-      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Bee Hive</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Place Holder for title?</Modal.Body>
+        <Form.Control type="email" onChange={(event) => {setName(event.target.value)}} placeholder="Name" />
+        <div>
+        </div>
+        	
+        <Modal.Footer>
+        	
+          <Button variant="primary" onClick={() => { makeHive(); handleClose(); gethives();}}>
+            Create
+          </Button>
+          	
+        </Modal.Footer>
+      </Modal>
+
+
+
+
+      <Row xs={1} md={5} className="g-4">
+		
 
       {hiveList.map((val,key) => {
-      	return <div>
-      	<Link to={"/hive?id=" + val[1]}>{val[0]}</Link>
-      			</div>
+      	return <Col>
+      	<Card className="mx-auto my-2">
+			        <Card.Body>
+			          <Card.Title>{val[0]} </Card.Title>
+			          <Card.Text>
+			            <Link to={"/hive?id=" + val[1]}>{val[0]}</Link>
+			          </Card.Text>
+			        </Card.Body>
+			        <Card.Footer>
+			          <small className="text-muted"> ID: {val[1]}</small>
+			        </Card.Footer>
+			      </Card>
+			      </Col>
       })}
+
+      
+			</Row>
 
       
       

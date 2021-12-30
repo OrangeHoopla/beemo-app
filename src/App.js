@@ -7,14 +7,19 @@ import Login from './Login';
 import Hives from './Hives';
 import Hive from './Hive';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import { useEffect } from 'react';
 import React from 'react';
+import Navbarme from './Navbar';
+
 
 function App() {
 
+//<Link to="/hives">Hives</Link>
   return (
   	
-	    <div className="App">
-	    	<Link to="/hives">Hives</Link>
+	    <div>
+	    	<Navbarme/>
+	    	
 		    <Routes>
 		    	<Route path ="/login" element={<Login />} />
 		    	<Route path ="/hives" element={<Hives />} />
@@ -25,4 +30,4 @@ function App() {
   );
 }
 
-export default (App);
+export default App
