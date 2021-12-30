@@ -73,11 +73,6 @@ function Hive({ signOut, user }) {
 	  ],
 	};
 
-
-	
-
-
-
 	useEffect(() => {
 		axios.get('https://hihvs5039b.execute-api.us-east-1.amazonaws.com/beta/temp',{
 		  headers: {
