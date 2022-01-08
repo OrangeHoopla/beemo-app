@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Beemo React App
+## _For people who want to monitor their bees_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-### `npm start`
+Beemo is a cloud-enabled, mobile-ready, offline-storage compatible(future),
+React-powered HTML5 Markdown editor.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- runs on aws using the least amount of resources
+- not able to expand as needed cause that costs more money
+- ✨ Powered by my money ✨
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- allows for alarms to be set(future)
+- tracks data for prolonged periods of time
+- allows for all hive data to be easily accessed
+- Allows for many unique types of sensor data input
+- Export data to user for unique data modeling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Written by me [Quade Kirby], this is part passion project,
+part making a website for my mother so she doesn't have to check
+her bee's all the time giving her more free time.
 
-### `npm run build`
+> Hi, if this project is gonna be open to the 
+> public it should have a README smile
+> [Jacob Howe]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This text you see here is *actually- written in Markdown! To get a feel
+for Markdown's syntax, type some text into the left window and
+watch the results in the right.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Beemo uses a number of open source projects to work properly:
 
-### `npm run eject`
+- [React] - HTML enhanced for web apps!
+- [AWS Cognito] - who needs their own database for users?
+- [MySQL] - I do, i need a database to store everyone's info
+- [React Bootstrap] - I don't have the time or will to mess with css that much
+- [AWS Lambda] - evented I/O for the backend(practically free)
+- [AWS API Gateway] - CORS is the bane of my existance 
+- [Axios] react can be bare metal in someways huh
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+And of course beemo-client itself is open source with a [public repository][dill]
+ on GitHub.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install the dependencies and devDependencies and start the server.
 
-## Learn More
+```sh
+cd beemo-app
+npm i
+node app
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For production environments...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm install --production
+NODE_ENV=production node app
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Want to contribute? Great!
 
-### Making a Progressive Web App
+Beemo uses react for fast developing.
+Make a change in your file and instantaneously see your updates!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Open your favorite Terminal and run these commands.
 
-### Advanced Configuration
+First Tab:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+node app
+```
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
+
+**Cause I know some of you out there aren't to be trusted**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [dill]: <https://github.com/OrangeHoopla/Beemo-Client>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [Jacob Howe]: <https://github.com/jacob-howe>
+   [Quade Kirby]: <https://orangehoopla.github.io/>
