@@ -2,8 +2,13 @@ import { Link} from 'react-router-dom';
 import React from 'react';
 import {Button, Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Amplify } from 'aws-amplify';
+import Auth from '@aws-amplify/auth';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import awsExports from './aws-exports';
 
-function Navbarme() {
+function NavbarIn({ signOut, user }) {
 
   return (
   	
@@ -26,7 +31,9 @@ function Navbarme() {
 			        <Nav.Link href="/about">about</Nav.Link>
 			      </Nav>
 			      <Nav className="ml-right">
-			      	<Nav.Link href="/user">Sign In</Nav.Link>
+			      	<Nav.Link href="/user">{user.username}</Nav.Link>
+			      	<Nav.Link  onClick={signOut}>Sign Out</Nav.Link>
+			      	
 			      </Nav>
 			    </Navbar.Collapse>
 			  </Container>
@@ -37,4 +44,4 @@ function Navbarme() {
   );
 }
 
-export default (Navbarme);
+export default withAuthenticator(NavbarIn);

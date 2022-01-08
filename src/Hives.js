@@ -7,7 +7,8 @@ import awsExports from './aws-exports';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {Button, Modal, Form, CardGroup, Row, Col, Card } from 'react-bootstrap';
+import {Button, Modal, Form, CardGroup, Row, Col, Card, Badge } from 'react-bootstrap';
+import NavbarIn from './NavBarUser';
 
 Amplify.configure(awsExports);
 
@@ -39,6 +40,7 @@ function Hives({ signOut, user }) {
 		.then((res) => {
 		  //console.log(res.data)
 		  setHiveList(res.data)
+		  console.log(res.data)
 		})
 		.catch((error) => {
 		  console.error(error)
@@ -82,6 +84,7 @@ function Hives({ signOut, user }) {
 		})
 		.then((res) => {
 		  setHiveList(res.data)
+		  console.log(res.data)
 		})
 		.catch((error) => {
 		  console.error(error)
@@ -98,6 +101,7 @@ function Hives({ signOut, user }) {
 
   return (
     <>
+    <NavbarIn/>
       <h1>{user.username}'s Hive Listing</h1>
 
       <Button onClick={signOut}>Sign out</Button>
@@ -134,9 +138,29 @@ function Hives({ signOut, user }) {
       	return <Col>
       	<Card className="mx-auto my-2">
 			        <Card.Body>
+			        	<Link to={"/hive?id=" + val[1]}>
 			          <Card.Title>{val[0]} </Card.Title>
+			          	</Link>
 			          <Card.Text>
-			            <Link to={"/hive?id=" + val[1]}>{val[0]}</Link>
+			            <div>
+			            	<Badge bg="warning" text="dark">
+			            		{val[3]} <span>&#8457;</span> 
+			            	</Badge>
+			            </div>
+
+			            <div>
+			            	<Badge bg="warning" text="dark">
+			            		{val[3]} <span>lbs</span> 
+			            	</Badge>
+			            </div>
+
+			            <div>
+			            	<Badge bg="warning" text="dark">
+			            		{val[3]}% <span>&#128267;</span> 
+			            	</Badge>
+			            </div>
+			            
+
 			          </Card.Text>
 			        </Card.Body>
 			        <Card.Footer>
