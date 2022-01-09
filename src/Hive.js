@@ -241,7 +241,7 @@ function Hive({ signOut, user }) {
       <Row>
       <Col>
       	<h1>Hive info: {}</h1>
-      	<Card className="mx-auto mb-2 shadow-sm"> 
+      	<Card className="mb-2 shadow-sm" > 
       		<Card.Title>General Info: </Card.Title>  
       		<Card.Body>
       		<div> <Badge bg="dark">Bee Genus:</Badge> {hiveinfo[2]}</div>
@@ -252,37 +252,33 @@ function Hive({ signOut, user }) {
       		</Card.Body>
       		
       	</Card>
-      	<Card className="mx-auto mb-2 shadow-sm"> 
+      	<Card className="mb-2 shadow-sm"> 
       		<Card.Title>Notes: </Card.Title>  
       		<Card.Body>{hiveinfo[0]}</Card.Body>
       	</Card>
       </Col>
 
       <Col>
-      
-      <Tabs defaultActiveKey="Temperature" id="uncontrolled-tab-example" className="mb-3">
-		  <Tab eventKey="Temperature" title="Temperature">
-		    <Line options={options} data={data1} height={5} width={10} />
-		  </Tab>
-		  <Tab eventKey="Weight" title="Weight">
-		    <Line options={options} data={data2} height={5} width={10} />
-		  </Tab>
-		  <Tab eventKey="humidity" title="Humidity">
-		    <Line options={options} data={data3} height={5} width={10} />
-		  </Tab>
-		  
-		  <Tab eventKey="Battery" title="Battery">
-		    <Line options={options} data={data4} height={5} width={10} />
-		  </Tab>
-		</Tabs>
-		<Button onClick={day}>1D</Button>{' '}
-		<Button onClick={week}>1W</Button>{' '}
-		<Button onClick={months}>3M</Button>{' '}
-
-      
-      
+		    <Tabs defaultActiveKey="Temperature" id="uncontrolled-tab-example" className="mb-3">
+				  <Tab eventKey="Temperature" title="Temperature">
+				    <Line options={options} data={data1} height={5} width={10} />
+						  </Tab>
+						  <Tab eventKey="Weight" title="Weight">
+						    <Line options={options} data={data2} height={5} width={10} />
+						  </Tab>
+						  <Tab eventKey="humidity" title="Humidity">
+						    <Line options={options} data={data3} height={5} width={10} />
+						  </Tab>
+						  <Tab eventKey="Battery" title="Battery">
+						    <Line options={options} data={data4} height={5} width={10} />
+						  </Tab>
+				</Tabs>
+				<Button onClick={day}>1D</Button>{' '}
+				<Button onClick={week}>1W</Button>{' '}
+				<Button onClick={months}>3M</Button>{' '}
       </Col>
-      </Row>
+
+    </Row>
       
 
       <Button variant="danger" onClick={handleShow}>
