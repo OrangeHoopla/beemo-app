@@ -8,7 +8,7 @@ function Navbarme() {
   return (
   	
 	    <div >
-	    	<Navbar bg="light" expand="lg">
+	    	<Navbar bg="light" expand="lg" className="shadow-sm">
 			  <Container>
 			    <Navbar.Brand className="ml-auto" href="/">
 			    <img

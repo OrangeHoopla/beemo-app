@@ -18,11 +18,16 @@ function Hives({ signOut, user }) {
 
 	const [hiveList,setHiveList] = useState([]);
 	const [name,setName] = useState('');
+	const [hivetype,setHiveType] = useState('');
+	const [temperment,setTemperment] = useState('');
+	const [beetype,setBeeType] = useState('');
+	const [location,setlocation] = useState('');
+	const [notes,setNotes] = useState('');
 
 	//modal stuff
 	const [show, setShow] = useState(false);
-  	const handleClose = () => setShow(false);
-  	const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 	async function callApi(){
 		const mad = await Auth.currentAuthenticatedUser()
@@ -56,7 +61,13 @@ function Hives({ signOut, user }) {
 		//console.log(user.signInUserSession.accessToken.jwtToken)
 
 		axios.post('https://hihvs5039b.execute-api.us-east-1.amazonaws.com/beta/hives',{
-			"name": name
+			"name": name,
+			"hivetype": hivetype,
+			"temperment": temperment,
+			"beetype": beetype,
+			"location": location,
+			"notes": notes
+
 		}, {
 		  headers: {
 		    'Authorization': `Bearer ${user.signInUserSession.accessToken.jwtToken}`
@@ -69,6 +80,15 @@ function Hives({ signOut, user }) {
 		.catch((error) => {
 		  console.error(error)
 		})
+
+		console.log(hivetype)
+		console.log(temperment)
+		console.log(beetype)
+
+		console.log(notes)
+		console.log(location)
+		console.log(name)
+
 
 
 	}
@@ -102,10 +122,10 @@ function Hives({ signOut, user }) {
   return (
     <>
     <NavbarIn/>
-      <h1>{user.username}'s Hive Listing</h1>
+     
 
-      <Button onClick={signOut}>Sign out</Button>
       
+      <br/>
       <Button variant="primary" onClick={handleShow}>
         New Bee Hive
       </Button>
@@ -114,14 +134,57 @@ function Hives({ signOut, user }) {
         <Modal.Header closeButton>
           <Modal.Title>Create Bee Hive</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Place Holder for title?</Modal.Body>
-        <Form.Control type="email" onChange={(event) => {setName(event.target.value)}} placeholder="Name" />
+        <Modal.Body>This info can be changed later on if you want.</Modal.Body>
+
+        <Form>
+        	<Row className="mx-auto mb-5">
+        		<Col>
+		        	<Form.Label htmlFor="name">Name</Form.Label>
+		        	<Form.Control type="email" onChange={(event) => {setName(event.target.value)}} placeholder="Name" />
+		        	<Form.Label htmlFor="loc">Location</Form.Label>
+		        	<Form.Control id="loc" type="email" onChange={(event) => {setlocation(event.target.value)}} placeholder="Beehive Location" />
+		        	<Form.Label htmlFor="not">Notes</Form.Label>
+		        	<Form.Control id="not" type="email"  onChange={(event) => {setNotes(event.target.value)}} placeholder="Ex: give sugar water" />
+	        	</Col>
+	        	<Col>
+		        	<Form.Label htmlFor="hivetype">Hive Type</Form.Label>
+		        	<Form.Select id="hivetype" onChange={(event) => {setHiveType(event.target.value)}}>
+		        		<option>---</option>
+		        		<option>Langstroth</option>
+		        		<option>Warre</option>
+		        		<option>Top Bar</option>
+		        	</Form.Select>
+
+		        	<Form.Label htmlFor="temper">Temperment</Form.Label>
+		        	<Form.Select id="temper" onChange={(event) => {setTemperment(event.target.value)}}>
+		        		<option>---</option>
+		        		<option>Gentle</option>
+		        		<option>Wary</option>
+		        		<option>Agressive</option>
+		        	</Form.Select>
+
+		        	<Form.Label htmlFor="bee">Bee Type (genus)</Form.Label>
+		        	<Form.Select id="bee" onChange={(event) => {setBeeType(event.target.value)}}>
+		        		<option>---</option>
+		        		<option>IDK</option>
+		        		<option>Western honey bee</option>
+		        		<option>German honey bee</option>
+		        		<option>Grey honey bee</option>
+		        		<option>Italian honey bee</option>
+		        		<option>Caucasian honey bee</option>
+		        		<option>Iberian honey bee</option>
+		        		<option>Africanised honey bee</option>
+		        	</Form.Select>
+	        	</Col>
+	        </Row>
+        </Form>
+
         <div>
         </div>
         	
         <Modal.Footer>
         	
-          <Button variant="primary" onClick={() => { makeHive(); handleClose(); gethives();}}>
+          <Button variant="primary" onClick={() => { makeHive(); handleClose();}}>
             Create
           </Button>
           	
@@ -136,7 +199,7 @@ function Hives({ signOut, user }) {
 
       {hiveList.map((val,key) => {
       	return <Col>
-      	<Card className="mx-auto my-2">
+      	<Card className="mx-auto my-2 shadow">
 			        <Card.Body>
 			        	<Link to={"/hive?id=" + val[1]}>
 			          <Card.Title>{val[0]} </Card.Title>
@@ -150,15 +213,22 @@ function Hives({ signOut, user }) {
 
 			            <div>
 			            	<Badge bg="warning" text="dark">
-			            		{val[3]} <span>lbs</span> 
+			            		{val[5]} <span>lbs</span> 
 			            	</Badge>
 			            </div>
 
 			            <div>
 			            	<Badge bg="warning" text="dark">
-			            		{val[3]}% <span>&#128267;</span> 
+			            		{val[7]}% <span>&#128267;</span> 
 			            	</Badge>
 			            </div>
+
+			            <div>
+			            	<Badge bg="warning" text="dark">
+			            		{val[9]}% <span>&#9748;</span> 
+			            	</Badge>
+			            </div>
+
 			            
 
 			          </Card.Text>

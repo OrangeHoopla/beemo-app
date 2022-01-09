@@ -20,7 +20,7 @@ import {
   TimeScale
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Container, Tab, Tabs, Button } from 'react-bootstrap';
+import { Container, Tab, Tabs, Button, Modal, Row, Col, Card, Badge } from 'react-bootstrap';
 import 'chartjs-adapter-moment';
 
 
@@ -33,12 +33,19 @@ function Hive({ signOut, user }) {
 	const { search } = useLocation();
 	const searchParams = new URLSearchParams(search)
 
+	//data stuff
 	const [temp,setTemp] = useState([]);
 	const [weight,setWeight] = useState([]);
 	const [humidity,setHumidity] = useState([]);
 	const [battery,setBattery] = useState([]);
+	const [hiveinfo,setHiveInfo] = useState([0,0,0,0,0,0,0,0]);
 	const [timerange,setTimeRange] = useState("");
 	const [endtimerange,setEndTimeRange] = useState("");
+
+	//modal stuff for delete button
+	const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 	//things needs for charts
 	ChartJS.register(
@@ -136,6 +143,7 @@ function Hive({ signOut, user }) {
 	};
 
 	useEffect(() => {
+//getting all the data for the hive
 		axios.get('https://hihvs5039b.execute-api.us-east-1.amazonaws.com/beta/temp',{
 		  headers: {
 		    'Authorization': `Bearer ${user.signInUserSession.accessToken.jwtToken}`
@@ -151,12 +159,15 @@ function Hive({ signOut, user }) {
 		  setWeight(res.data.weight.map(function(value,index) { return { x: value[0] ,y: value[1]} }))
 		  setHumidity(res.data.humidity.map(function(value,index) { return { x: value[0] ,y: value[1]} }))
 		  setBattery(res.data.battery.map(function(value,index) { return { x: value[0] ,y: value[1]} }))
+		  setHiveInfo(res.data.hiveinfo[0])
 		})
 		.catch((error) => {
 		  console.error(error)
 		})
+//getting the basic info for the hive
+		
 
-		console.log(temp)
+		
   
 	}, []);
 
@@ -170,7 +181,7 @@ function Hive({ signOut, user }) {
 		var start = new Date();
 		start.setUTCHours(0,0,0,0);
 		const timezoneOffset = (new Date()).getTimezoneOffset();
-		console.log(timezoneOffset);
+		//console.log(timezoneOffset);
 		
 		setTimeRange(start.toUTCString())
 		start.setUTCHours(23,59,59,999);
@@ -221,15 +232,34 @@ function Hive({ signOut, user }) {
 	}
 		
 	
-//{Y.map(name => <h2>{name}</h2>)}
 
   return (
     <>
     <NavbarIn/>
-      <h1>{user.username}'s Hive Info</h1>
       
-      <div>
-      <Container>
+      
+      <Row>
+      <Col>
+      	<h1>Hive info: {}</h1>
+      	<Card className="mx-auto mb-2 shadow-sm"> 
+      		<Card.Title>General Info: </Card.Title>  
+      		<Card.Body>
+      		<div> <Badge bg="dark">Bee Genus:</Badge> {hiveinfo[2]}</div>
+      		<div> <Badge bg="dark">Temperment:</Badge> {hiveinfo[5]}</div>
+      		<div> <Badge bg="dark">Location:</Badge> {hiveinfo[3]}</div>
+      		<div> <Badge bg="dark">Hive Type:</Badge> {hiveinfo[4]}</div>
+
+      		</Card.Body>
+      		
+      	</Card>
+      	<Card className="mx-auto mb-2 shadow-sm"> 
+      		<Card.Title>Notes: </Card.Title>  
+      		<Card.Body>{hiveinfo[0]}</Card.Body>
+      	</Card>
+      </Col>
+
+      <Col>
+      
       <Tabs defaultActiveKey="Temperature" id="uncontrolled-tab-example" className="mb-3">
 		  <Tab eventKey="Temperature" title="Temperature">
 		    <Line options={options} data={data1} height={5} width={10} />
@@ -250,9 +280,33 @@ function Hive({ signOut, user }) {
 		<Button onClick={months}>3M</Button>{' '}
 
       
-      </Container>
-      <Button onClick={deleteHive}>Delete Hive</Button>
-      </div>
+      
+      </Col>
+      </Row>
+      
+
+      <Button variant="danger" onClick={handleShow}>
+        Delete Hive
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Bee Hive</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you Sure you want to do this?</Modal.Body>
+        
+        
+        	
+        <Modal.Footer>
+        	
+          <Button variant="danger" onClick={() => { deleteHive(); handleClose();}}>
+            Delete
+          </Button>
+          	
+        </Modal.Footer>
+      </Modal>
+
+      
       
 
       
