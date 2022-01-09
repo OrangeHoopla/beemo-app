@@ -160,7 +160,7 @@ function Hives({ signOut, user }) {
 		        		<option>---</option>
 		        		<option>Gentle</option>
 		        		<option>Wary</option>
-		        		<option>Agressive</option>
+		        		<option>Aggressive</option>
 		        	</Form.Select>
 
 		        	<Form.Label htmlFor="bee">Bee Type (genus)</Form.Label>
