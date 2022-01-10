@@ -28,9 +28,9 @@ her bee's all the time giving her more free time.
 > public it should have a README smile
 > [Jacob Howe]
 
-This text you see here is *actually- written in Markdown! To get a feel
-for Markdown's syntax, type some text into the left window and
-watch the results in the right.
+And so the readme was created though this website will likely stay as a small
+show off website or act as a spring board for other monitoring based services I
+want to create for myself
 
 ## Tech
 
@@ -48,8 +48,6 @@ And of course beemo-client itself is open source with a [public repository][dill
  on GitHub.
 
 ## Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
