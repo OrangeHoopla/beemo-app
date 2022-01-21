@@ -8,7 +8,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {Button, Modal, Form, CardGroup, Row, Col, Card, Badge } from 'react-bootstrap';
-import NavbarIn from './NavBarUser';
 
 Amplify.configure(awsExports);
 
@@ -121,10 +120,6 @@ function Hives({ signOut, user }) {
 
   return (
     <>
-    <NavbarIn/>
-     
-
-      
       <br/>
       <Button variant="primary" onClick={handleShow}>
         New Bee Hive

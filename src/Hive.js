@@ -5,7 +5,6 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import axios from 'axios';
-import NavbarIn from './NavBarUser';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
@@ -235,9 +234,6 @@ function Hive({ signOut, user }) {
 
   return (
     <>
-    <NavbarIn/>
-      
-      
       <Row>
       <Col>
       	<h1>Hive info: {}</h1>
